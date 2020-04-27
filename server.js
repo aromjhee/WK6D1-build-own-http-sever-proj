@@ -1,12 +1,16 @@
 const http = require('http');
 
 http.createServer(function(req, res) {
-    // if (request.url === '/200') {
-
-    // }
-    // response.writeHead(200, { 'Content-Type': 'text/html'});
-    // response.write('<h1>Hello</h1>');
-    response.end();
+    if (req.url === '/OK') {
+        console.log('Inbound "OK" request being processed...');
+        res.writeHead(200);
+        res.end();
+    } else {
+        console.log('Invalid url...');
+        res.writeHead(404);
+        res.end();
+    }
+    res.end();
 }).listen(3000, function() {
     console.log('Helpful startup message...port 3000');
 })
